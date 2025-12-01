@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# usage 
+if [[ -z "$1" ]]; then
+    echo "Usage: gendayxx.sh <day>"
+    echo "Example: gendayxx.sh 1"
+	echo "Optionally, second argument can be 'py' to create a Python project instead of Go."
+    return
+fi
+
 # day variable has no leading 0 and must be between 1 and 25
 day=${1##+(0)}
 if ((day < 1 || day > 25)); then
@@ -10,7 +18,7 @@ fi
 project=$(printf "day%02d" $1)
 
 # year variable is the current year
-year=9999
+year=2024
 
 # get session cookie from file if .session exists
 if [[ -f ".session" ]]; then
